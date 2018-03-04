@@ -1,4 +1,4 @@
-const AuthenticationController = require('./controllers/userController'),
+const AuthenticationController = require('./controllers/UserController'),
     express = require('express');
 
 
