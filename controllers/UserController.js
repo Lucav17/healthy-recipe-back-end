@@ -25,7 +25,7 @@ exports.register = function (req, res) {
 
     User.findOne({ email: email }, function (err, existingUser) {
         if (err) {
-            res.send(400).json({ "error": err });
+            return res.status(400).send({ "error": err });
         }
         // If user is not unique, return error
         if (existingUser) {
@@ -43,7 +43,7 @@ exports.register = function (req, res) {
                 res.send(400).json({ "error": err });
             }
             let userInfo = setUserInfo(user);
-            res.status(201).json({
+            return res.status(201).send({
                 token: "JWT " + generateToken(userInfo),
                 user: userInfo
             });
